@@ -1,3 +1,4 @@
-FROM tomcat:8.0
-COPY ./target/*.jar /usr/local/tomcat/webapps
-EXPOSE 8080
+FROM openjdk:11
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
